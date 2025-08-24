@@ -1,11 +1,14 @@
-exports.handler = async (event, context) => {
-  const { name } = event.queryStringParameters || {};
-  
-  return {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'text/plain',
-    },
-    body: `Hello ${name || 'World'}!`
-  };
-};
+import { Context } from '@netlify/functions'
+
+export default (request: Request, context: Context) => {
+  try {
+    const url = new URL(request.url)
+    const subject = url.searchParams.get('name') || 'World'
+
+    return new Response(`Hello ${subject}`)
+  } catch (error) {
+    return new Response(error.toString(), {
+      status: 500,
+    })
+  }
+}
