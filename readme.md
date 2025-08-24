@@ -11,8 +11,8 @@ npm install -g netlify-cli
 
 1. **Clone and install:**
    ```bash
-   git clone <your-repo-url>
-   cd netlify-functions-template
+   git clone git@github.com:pie-inc/netlify-functions-template.git <preferred-directory>
+   cd <preferred-directory>
    npm install
    ```
 
